@@ -1,5 +1,7 @@
 # Teiko Labs Take-Home Assignment
 
+Live Dashboard: [https://teiko-teiknical-adithya.streamlit.app/](https://teiko-teiknical-adithya.streamlit.app/)
+
 A Python data pipeline and interactive dashboard analyzing immune cell-count data from a clinical
 trial. The source data (`data/cell-count.csv`) measures five immune cell populations
 (`b_cell`, `cd8_t_cell`, `cd4_t_cell`, `nk_cell`, `monocyte`) across 10,500 biological samples
@@ -80,24 +82,6 @@ pytest
 
 The `pyproject.toml` configures `pythonpath = ["."]` and `testpaths = ["tests"]` so `pytest` picks
 up the suite without any flags.
-
-### Deploying the dashboard on Streamlit Community Cloud
-
-Streamlit Community Cloud requires a one-time manual connection step that cannot be automated by
-this repository. The procedure is:
-
-1. Push the repository to a public GitHub account.
-2. Sign in to [share.streamlit.io](https://share.streamlit.io) with the same GitHub account.
-3. Click "New app" and select the repository, branch (`main`), and entry point `streamlit_app.py`.
-4. Streamlit Cloud reads `requirements.txt` automatically. No additional configuration is required;
-   `.streamlit/config.toml` already sets `headless = true` and `gatherUsageStats = false`.
-5. Copy the resulting public URL into the [Deployed dashboard](#4-deployed-dashboard) section
-   below.
-
-The dashboard reads the committed `outputs/tables/` and `outputs/figures/` artifacts plus
-the committed `cell-count.db`. The deployed instance does not run the pipeline at boot;
-Streamlit Cloud still installs the full `requirements.txt` (including scipy, statsmodels,
-and matplotlib) so the dashboard can render figures and execute ad-hoc analysis.
 
 ---
 
@@ -343,11 +327,9 @@ they execute without a browser, server, or display.
 
 ## 4. Deployed dashboard
 
-<!-- DEPLOYED_URL -->
+Dashboard: [https://teiko-teiknical-adithya.streamlit.app/](https://teiko-teiknical-adithya.streamlit.app/)
 
-The live URL is filled in after the one-time Streamlit Community Cloud connect step described in
-[Section 1](#deploying-the-dashboard-on-streamlit-community-cloud). The dashboard reads the
-committed `outputs/` artifacts and `cell-count.db`, so the deployed instance is functional
+The dashboard reads the committed `outputs/` artifacts and `cell-count.db`, so the deployed instance is functional
 immediately after the build finishes.
 
 The dashboard has four sections selected through a sidebar radio:
